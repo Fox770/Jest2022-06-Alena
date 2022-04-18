@@ -41,7 +41,7 @@ describe('Регистрация', () => {
     const found = body.auctions.find((item) => item.id === 190414);
     expect(found.id).toEqual(190414);
   });
-  test.only('Popular method with flatmap', async () => {
+  test('Popular method with flatmap', async () => {
     const { body } = await supertest('https://trucker.group')
       .get('/api/v2/public/auctions?page=1&page_size=5&filter%5Bexecutor_status_in%5D%5B%5D=auction&filter%5Bexecutor_status_in%5D%5B%5D=timed_out&filter%5Bdistance_gteq%5D=0&filter%5Bdistance_lteq%5D=5000&filter%5Bcargo_weight_gteq%5D=0&filter%5Bcargo_weight_lteq%5D=10000&filter%5Bs%5D=loaded_at%20desc')
       .set('Accept', 'application/json')
