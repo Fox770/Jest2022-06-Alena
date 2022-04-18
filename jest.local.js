@@ -1,7 +1,5 @@
 module.exports = {
   testEnvironment: 'node',
-  reporters: [
-    'default'],
   moduleFileExtensions: ['js', 'json'],
   transform: {
     '^.+\\.jsx?$': 'babel-jest',
@@ -10,5 +8,12 @@ module.exports = {
   globals: {
     testTimeout: 50000,
   },
+  reporters: [
+    'default',
+    ['jest-html-reporters', {
+      filename: 'report.html',
+      openReport: true,
+    }],
+  ],
   verbose: true,
 };
