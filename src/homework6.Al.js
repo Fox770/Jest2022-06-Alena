@@ -39,7 +39,7 @@ const scores2 = {
    };
 
 export const sumScores2 = (scores2) => {  
-        return Object.values(scores2).reduce((Anna, Olga, Ivan) => 10 + 1 + 5);
+        return Object.values(scores2).reduce((sum, current) => sum + current, 0);
   };
 
 console.log(sumScores2(scores2));
