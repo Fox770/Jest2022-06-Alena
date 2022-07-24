@@ -32,16 +32,6 @@ console.log(sumScores(scores));
  * @returns {number} Сумма баллов объекта
  */
 
-// const scores2 = {
-//     Anna: 10,
-//     Olga: 1,
-//     Ivan: 5,
-//    };
-
-// export const sumScores2 = (scores2) => {  
-//         return Object.values(scores2).reduce((Anna, Olga, Ivan) => 10 + 1 + 5);
-//   };
-  
 const scores2 = {
     Anna: 10,
     Olga: 1,
