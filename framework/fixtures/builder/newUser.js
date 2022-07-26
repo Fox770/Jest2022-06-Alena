@@ -22,6 +22,7 @@ const BuildUser = function () {
         data[fieldName] = this[fieldName];
       }
     });
+    return data;
   };
 };
 
