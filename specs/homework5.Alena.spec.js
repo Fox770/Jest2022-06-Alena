@@ -38,7 +38,7 @@ describe('Testing all airports site', () => {
         const response = await fetch(baseURL + path, getMethodHeaders);
         expect(response.status).toEqual(200);
     });
-    test.only('Allows you to save a favorite airport post /favorites 201', async () => {
+    test('Allows you to save a favorite airport post /favorites 201', async () => {
         const path = '/favorites?';
         const airportIdValue = ['HGU', 'LAE', 'POM', 'WWK', 'UAK', 'HFN', 'PFJ', 'YAY', 'YBK', 'RKV', 'YCB'];
         const addMyFavoriteAirport_id = new URLSearchParams ({ airport_id: randomAirportID(airportIdValue) });

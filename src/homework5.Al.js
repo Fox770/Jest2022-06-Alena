@@ -3,7 +3,6 @@
  * @param {method} = get
  * @param {headers} = headers
  */
- 
  export const getMethodHeaders =  {
     method: 'GET',
     headers: {
