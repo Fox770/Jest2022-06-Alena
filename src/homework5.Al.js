@@ -22,4 +22,3 @@ export const randomAirportID = (airport_idValue) => {
         return random
     }
 };
-console.log(randomAirportID(airport_idValue))

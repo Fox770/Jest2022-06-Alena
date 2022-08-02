@@ -9,9 +9,7 @@ describe('Testing all airports site', () => {
     test('Returns all airports get /airports 200', async () => {
         const path = '/airports';
         const response = await fetch(baseURL + path, {method: 'GET'});
-        const data = await response.json();
         expect(response.status).toEqual(200);
-        console.log(data);
     });
     test('Calculate distance post /airports/distance 200', async () => {
         const path = '/airports/distance';
@@ -23,7 +21,6 @@ describe('Testing all airports site', () => {
             { method: 'POST', headers: {'Content-Type': 'application/json'}, 
             body: JSON.stringify(distance) });
         expect(response.status).toEqual(200);
-        console.log(response);
     });
     test('Returns the API token post /tokens 200', async () => {
         const path = '/tokens';
@@ -35,25 +32,22 @@ describe('Testing all airports site', () => {
         { method: 'POST', headers: {'Content-Type': 'application/json'}, 
         body: JSON.stringify(loginparams)});
         expect(response.status).toEqual(200);
-        console.log(response);
     });
     test('Returns all the favorite airports get /favorites 200', async () => {
         const path = '/favorites';
         const response = await fetch(baseURL + path, getMethodHeaders);
         expect(response.status).toEqual(200);
-        console.log(response);
     });
-    test('Allows you to save a favorite airport post /favorites 201', async () => {
+    test.only('Allows you to save a favorite airport post /favorites 201', async () => {
         const path = '/favorites?';
-        const airport_idValue = ['HGU', 'LAE', 'POM', 'WWK', 'UAK', 'HFN', 'PFJ', 'YAY', 'YBK', 'RKV', 'YCB'];
-        const addMyFavoriteAirport_id = new URLSearchParams ({ airport_id: randomAirportID(airport_idValue) });
+        const airportIdValue = ['HGU', 'LAE', 'POM', 'WWK', 'UAK', 'HFN', 'PFJ', 'YAY', 'YBK', 'RKV', 'YCB'];
+        const addMyFavoriteAirport_id = new URLSearchParams ({ airport_id: randomAirportID(airportIdValue) });
 
-        const response = await fetch(baseURL + path + addMyFavoriteAirport_id, 
+        const response = await fetch(baseURL + path + addMyFavoriteAirport_id.toString(), 
             { headers: {'Authorization': 'Bearer oeMbfr5Xdo4WvJbEv49sxttX', 'Content-Type': 'application/json'},
             method: 'POST', 
             body: JSON.stringify() } );
             expect(response.status).toEqual(201);
-            console.log(response); 
     });
     
     /** Negative tests */
@@ -67,7 +61,6 @@ describe('Testing all airports site', () => {
             }
         });
         expect(response.status).toEqual(401);
-        console.log(response);
     });
     test('Do not Return the favorite airport get /favorites/:id 404 (Not Found)', async () => {
         const path = '/favorites/:id';
@@ -75,6 +68,5 @@ describe('Testing all airports site', () => {
   
         const response = await fetch(baseURL + path + getAirportID, getMethodHeaders); 
         expect(response.status).toEqual(404);
-        console.log(response);
     });
 });
