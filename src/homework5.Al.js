@@ -14,10 +14,10 @@
 /** Random function of airport_id values
  * @param {string} = airport_id Value
  */
-const airport_idValue = ['MAG', 'HGU', 'LAE', 'POM', 'WWK', 'UAK', 'HFN', 'PFJ', 'YCB']
-export const randomAirportID = (airport_idValue) => {
+
+export const randomAirportID = (airportIdValue) => {
     for (let i = 0; i < 2; i++) {
-        const random = airport_idValue[Math.floor(Math.random() * airport_idValue.length)];
+        const random = airportIdValue[Math.floor(Math.random() * airportIdValue.length)];
         return random
     }
 };

@@ -40,16 +40,15 @@ describe('Testing all airports site', () => {
     });
     test('Allows you to save a favorite airport post /favorites 201', async () => {
         const path = '/favorites?';
-        const airportIdValue = ['HGU', 'LAE', 'POM', 'WWK', 'UAK', 'HFN', 'PFJ', 'YAY', 'YBK', 'RKV', 'YCB'];
-        const addMyFavoriteAirport_id = new URLSearchParams ({ airport_id: randomAirportID(airportIdValue) });
+        const airportIdValue = ['GOH', 'THU', 'SIJ', 'EGS', 'PFJ'];
+        const addMyFavoriteAirportId = new URLSearchParams({airport_id: randomAirportID(airportIdValue)});
 
-        const response = await fetch(baseURL + path + addMyFavoriteAirport_id.toString(), 
+        const response = await fetch(baseURL + path + addMyFavoriteAirportId, 
             { headers: {'Authorization': 'Bearer oeMbfr5Xdo4WvJbEv49sxttX', 'Content-Type': 'application/json'},
             method: 'POST', 
             body: JSON.stringify() } );
-            expect(response.status).toEqual(201);
+        expect(response.status).toEqual(201);
     });
-    
     /** Negative tests */
     test('Do not Return all the favorite airports get /favorites 401 (Unauthorized)', async () => {
         const path = '/favorites';
