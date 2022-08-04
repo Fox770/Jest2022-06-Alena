@@ -1,8 +1,16 @@
-import { clientGet, clientGetAuth, clientPost, clientPostAuth, clientPatchAuth, clientDeletehAuth } from './settings/fetch_qa'
+import { clientGet, clientGetAuth, clientPost, clientPostAuth, clientPatchAuth, clientDeletehAuth } from '../framework/services/airports.service';
 
 /** Description of Airport Client function
  * Allows you to retun, create, update and delete 
  * your data in Airport Gap account
+ * @param {integer} id
+ * @param {object} distance
+ * @param {object} tokens
+ * @param {string} airportId
+ * @param {string} id the second id from editFavoriteAirport
+ * @param {string} note from editFavoriteAirport
+ * @param {integer} favoriteId
+ * @return {object} ответ от сервера
  */
 export const airportClient = {
     getAllAirports: () => {
