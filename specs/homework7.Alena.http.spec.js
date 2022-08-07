@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker'
-import { airportClient, randomAirportID } from '../src/homework5.Al.http'
+import { airportClient, randomAirportID } from '../src/homework7.Al.http'
 
 describe('Testing all airports site', () => {
 
@@ -49,13 +49,13 @@ describe('Testing all airports site', () => {
     })
     test('Allows you to update the note in favorite airport patch /favorites/:id 200', async () => {
         const id = "6164"
-        const addNote = { note: `YAZ - Tofino / Long Beach Airport in Canada`}
+        const addNote = {note: `YAZ - Tofino / Long Beach Airport in Canada`}
 
         const response = await airportClient.editFavoriteAirport(id, addNote)
         expect(response.status).toEqual(200)
     })
     test('Deletes one of your favorite airports delete /favorites/:id 204', async () => {
-        const favoriteIdAir = [6032, 6038, 6042, 6183, 6040, 6093]
+        const favoriteIdAir = [6184, 6037, 6041, 6187, 6191, 6184, 6187, 6188]
         const favoriteId = randomAirportID(favoriteIdAir)
 
         const response = await airportClient.deleteFavoriteAirport(favoriteId)
