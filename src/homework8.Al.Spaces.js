@@ -2,22 +2,22 @@ import supertest from 'supertest';
 import myCredentials from '../framework/config/urls.Al.FlowFast';
 const { myUrl } = myCredentials;
 
- /** Describe functions for Book Store API website
- * to create account, generate token, create user and delete it
+ /** Describe functions for FlowFast Developers API website
+ to create space, get spaces and don't return it if token is invalid
  
- * @param {string} title 
+ * @param {string} space 
  * @param {string} space_id
  * @returns {object} answer from server
  */
  
 const Space = {
-    createNewSpace: (title) => {
+    createNewSpace: (space) => {
         return supertest(myUrl)
         .post('/spaces')
         .set('Accept', 'application/json')
         .set('Content-Type', 'application/json')
         .set('Authorization', `Bearer ${myCredentials.token}`)
-        .send(title)
+        .send(space)
     },
     getListSpaces: () => {
         return supertest(myUrl)
@@ -33,13 +33,13 @@ const Space = {
         .set('Content-Type', 'application/json')
         .set('Authorization', `Bearer ${myCredentials.token}`)
     },
-    donotcreateNewSpace: (title) => {
+    donotcreateNewSpace: (space) => {
         return supertest(myUrl)
         .post('/spaces')
         .set('Accept', 'application/json')
         .set('Content-Type', 'application/json')
-        .set('Authorization', 'Bearer 123545463546')
-        .send(title)
+        .set('Authorization', `Bearer ${myCredentials.invalidToken}`)
+        .send(space)
     },
 }
 

@@ -1,16 +1,26 @@
 import BuildSpace, { SpaceId, newSpace } from '../framework/fixtures/builder/newSpaces.Al.FF';
 import Space from '../src/homework8.Al.Spaces';
 
-describe('Testing Book Store API', () => {
+describe('Testing Spaces in FlowFast Developers API', () => {
     /** Positive Spaces tests */
     test('Returns New Space with builder post 200', async () => { 
-        const title = new BuildSpace().addNewTitle().addDefaultCardTypeId().addExternalId()
-        const response = await Space.createNewSpace(title)
+        const space = new BuildSpace().addTitle().addCardTypeId([]).addExternalId()
+        const response = await Space.createNewSpace(space)
         expect(response.status).toEqual(200)
+        expect.objectContaining({
+            title: expect.any({String}),
+            allowed_card_type_ids: expect.any([Array]),
+            external_id: expect.any({Number}),
+          })
     })
     test('Returns New Space with params post 200', async () => { 
         const response = await Space.createNewSpace(newSpace)
         expect(response.status).toEqual(200)
+        expect.objectContaining({
+            title: expect.any({String}),
+            external_id: expect.any({Number}),
+            allowed_card_type_ids: expect.any([Array]),
+          })
     })
     test('Returns list of spaces get 200', async () => { 
         const response = await Space.getListSpaces()
@@ -27,7 +37,7 @@ describe('Testing Book Store API', () => {
         expect(response.status).toEqual(400)
         expect(response.body).toEqual({message: "Space should have required property 'title'"}) 
     })
-    test('Does not Return New Space with invalid apiKey post 401 Unauthorized', async () => { 
+    test('Does not Return New Space with invalid token post 401 Unauthorized', async () => { 
         const response = await Space.donotcreateNewSpace(SpaceId)
         expect(response.status).toEqual(401)
     })
