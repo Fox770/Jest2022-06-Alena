@@ -29,7 +29,7 @@ jobs:
         with: 
           name: report
           if-no-files-found: error
-          path: specs/homework8.AN.Spaces.spec.js
+          path: specs/homework8.AN.Spaces.spec.js.html
 
       # - name: Publication coverage report
       #   uses: actions/upload-artifact@v3
