@@ -29,7 +29,7 @@ jobs:
         with: 
           name: report
           if-no-files-found: error
-          path: jest_html_reporters_homework8.AN.Spaces.spec.js.html  
+          path: jest_html_reporters_callback__specs/homework8.AN.Spaces.spec.js_html 
 
       - name: Publication coverage report
         uses: actions/upload-artifact@v3
