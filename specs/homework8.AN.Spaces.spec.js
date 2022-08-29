@@ -40,5 +40,6 @@ describe('Testing Spaces in FlowFast Developers API', () => {
     test('Does not Return New Space with invalid token post 401 Unauthorized', async () => { 
         const response = await Space.donotcreateNewSpace(SpaceId)
         expect(response.status).toEqual(401)
+        expect(response.text).toEqual('Unauthorized')
     })
 });
