@@ -1,0 +1,39 @@
+name: Tests
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: npm
+
+      - name: Install modules
+        run: npm ci
+
+      # - name: Run tests
+      #   continue-on-error: true
+      #   run: npm test homework8.AN.Spaces.spec.js
+
+      - name: Get coverage
+        continue-on-error: true
+        run: npm run coverage
+
+      - name: Use the Upload Artifact GitHub Action
+        uses: actions/upload-artifact@v3
+        with: 
+          name: report
+          if-no-files-found: error
+          path: jest_html_reporters_homework8.AN.Spaces.spec.js.html  
+
+      - name: Publication coverage report
+        uses: actions/upload-artifact@v3
+        with: 
+          name: coverage
+          if-no-files-found: error
+          path: coverage
