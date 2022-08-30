@@ -33,12 +33,12 @@ describe('Testing all airports site', () => {
         const response = await airportClient.getFavoriteAirports()
         expect(response.status).toEqual(200)
     })
-    test('Returns the favorite airport get /favorites/:id 200', async () => {
+    test.skip('Returns the favorite airport get /favorites/:id 200', async () => {
         const id = 6037
         const response = await airportClient.getFavoriteAirportById(id)
         expect(response.status).toEqual(200)
     })
-    test('Allows you to save a favorite airport post /favorites 201', async () => {
+    test.skip('Allows you to save a favorite airport post /favorites 201', async () => {
         const airportId = ['MAG', 'AEY', 'GOH', 'HZK', 'YAM', 'EGS', 'YBL', 'YCB']
         const airportData = {
             airport_id: randomAirportID(airportId),
@@ -54,7 +54,7 @@ describe('Testing all airports site', () => {
         const response = await airportClient.editFavoriteAirport(id, addNote)
         expect(response.status).toEqual(200)
     })
-    test('Deletes one of your favorite airports delete /favorites/:id 204', async () => {
+    test.skip('Deletes one of your favorite airports delete /favorites/:id 204', async () => {
         const favoriteIdAir = [6184, 6037, 6041, 6187, 6191, 6184, 6187, 6188]
         const favoriteId = randomAirportID(favoriteIdAir)
 

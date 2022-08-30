@@ -6,7 +6,7 @@ const { faker } = require('@faker-js/faker');
 // import faker from ' @faker-js/faker';
 // import api from '../framework/services';
 
-describe('Регистрация', () => {
+describe.skip('Регистрация', () => {
   test('User can register into the system', async () => {
     // todo вынести в helper
     const user = {

@@ -18,18 +18,18 @@ jobs:
 
       - name: Run tests
         continue-on-error: true
-        run: npm test only homework8.AN.Spaces.spec.js
+        run: npm test 
 
       # - name: Get coverage
       #   continue-on-error: true
-      #   run: npm run coverage only homework8.AN.Spaces.spec.js
+      #   run: npm test
 
       - name: Use the Upload Artifact GitHub Action
         uses: actions/upload-artifact@v3
         with: 
           name: report
           if-no-files-found: error
-          path: specs/homework8.AN.Spaces.spec.js.html
+          path: jest_html_reporters.html
 
       # - name: Publication coverage report
       #   uses: actions/upload-artifact@v3
