@@ -25,4 +25,4 @@ jobs:
         with: 
           name: report
           if-no-files-found: error
-          path: './GitHub/jest2022-06/report.html'
+          path: jest-html-reporters.html
