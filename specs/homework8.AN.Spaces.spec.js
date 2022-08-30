@@ -27,7 +27,7 @@ describe('Testing Spaces in FlowFast Developers API', () => {
         expect(response.status).toEqual(200)
     })
     test('Returns space from account get 200', async () => { 
-        const space_id = 75314
+        const space_id = 75265
         const response = await Space.getSpace(space_id)
         expect(response.status).toEqual(200)
     })
