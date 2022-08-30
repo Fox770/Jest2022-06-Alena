@@ -16,11 +16,7 @@ jobs:
       - name: Install modules
         run: npm ci
 
-      # - name: Run tests
-      #   continue-on-error: true
-      #   run: npm test 
-
-      - name: Get coverage
+      - name: Run tests
         continue-on-error: true
         run: npm test
 
@@ -30,10 +26,3 @@ jobs:
           name: report
           if-no-files-found: error
           path: jest_html_reporters.html
-
-      - name: Publication coverage report
-        uses: actions/upload-artifact@v3
-        with: 
-          name: coverage
-          if-no-files-found: error
-          path: coverage
