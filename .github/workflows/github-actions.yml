@@ -25,6 +25,4 @@ jobs:
         with: 
           name: report
           if-no-files-found: error
-          path: |
-          report.html
-          jest-html-reporters-attach/report
+          path: report.html
