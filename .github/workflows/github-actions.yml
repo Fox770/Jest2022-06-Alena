@@ -12,17 +12,12 @@ jobs:
         with:
           node-version: 16
           cache: npm
-
-      - name: Install modules
-        run: npm ci
-
-      - name: Run tests
-        continue-on-error: true
-        run: npm run test
-
-      - name: Use the Upload Artifact GitHub Action
-        uses: actions/upload-artifact@v3
-        with: 
-          name: report
-          if-no-files-found: error
-          path: jest-html-reporters.html
+      - run: npm install
+      - run: npm test
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: testsReport
+          path: |
+            report.html
+            jest-html-reporters-attach/report
