@@ -2,8 +2,17 @@ name: Tests
 
 on: [push]
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   test:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     runs-on: ubuntu-latest
 
     steps:
@@ -13,16 +22,27 @@ jobs:
           node-version: 16
           cache: npm
 
+      - name: Setup Pages
+        uses: actions/configure-pages@v1
+
       - run: npm install
       - run: npm test
 
-      - uses: actions/upload-artifact@v3
+      - name: Use the Upload Artifact GitHub
+        uses: actions/upload-artifact@v3
         if: always()
-        with:
-          name: testsReport
-          path: |
+          with:
+           name: testsReport
+           path: |
             report.html
             jest-html-reporters-attach/report
+      
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: jest-html-reporters-attach/report
+          clean: true
+          token: ${{ secrets.TOKEN }}
 
       - name: Send report via telegram bot
-        run: "curl -X POST https://api.telegram.org/bot${{secrets.BOT_TOKEN}}/sendMessage -H \"Content-Type: application/json\" -d '{\"chat_id\": \"${{secrets.CHAT_ID}}\", \"text\": \"Hello world!\"}'" 
+        run: "curl -X POST https://api.telegram.org/bot${{secrets.BOT_TOKEN}}/sendMessage -H \"Content-Type: application/json\" -d '{\"chat_id\": \"${{secrets.CHAT_ID}}\", \"text\": \"Report link is: ${{env.GITHUB_ACTION_PATH}}/${{env.GITHUB_ACTION}}\"}'" 
