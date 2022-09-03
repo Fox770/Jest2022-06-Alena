@@ -30,7 +30,7 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         if: always()
-          with:
+        with:
            name: testsReport
            path: |
             report.html
