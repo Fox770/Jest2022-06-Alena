@@ -21,7 +21,7 @@ describe('Отправляем http запросы', () => {
     const { status } = await fetch(URL + path + params, { method: 'GET' });
     expect(status).toEqual(200);
   });
-  test('Создать пользователя post api/users 201', async () => {
+  test.skip('Создать пользователя post api/users 201', async () => {
     const path = 'api/users';
     const user = {
       name: 'morpheus',
