@@ -11,7 +11,7 @@ jobs:
   test:
     environment:
       name: github-pages
-      url: http://fox770.mypages.hw.otus.com/
+      url: ${{ steps.deployment.outputs.page_url }}
     
     runs-on: ubuntu-latest
 
@@ -36,9 +36,12 @@ jobs:
             report.html
             jest-html-reporters-attach/report
       
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: html-report
+          clean: true
+          token: ${{ secrets.TOKEN }}
 
       - name: Send report via telegram bot
         run: "curl -X POST https://api.telegram.org/bot${{secrets.BOT_TOKEN}}/sendMessage -H \"Content-Type: application/json\" -d '{\"chat_id\": \"${{secrets.CHAT_ID}}\", \"text\": \"Hello world from public repo!\"}'"
