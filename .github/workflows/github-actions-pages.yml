@@ -11,7 +11,7 @@ jobs:
   test:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: http://fox770.mypages.hw.otus.com/
     
     runs-on: ubuntu-latest
 
