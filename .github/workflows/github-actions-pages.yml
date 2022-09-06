@@ -31,7 +31,6 @@ jobs:
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
-         if: always()
           with:
            path: |
             report.html
