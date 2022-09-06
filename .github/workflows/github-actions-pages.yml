@@ -31,7 +31,9 @@ jobs:
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
-        with: ./jest-html-reporters-attach/report
+        with: |
+            report.html
+            jest-html-reporters-attach/report
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
