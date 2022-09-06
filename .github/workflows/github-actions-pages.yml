@@ -31,11 +31,14 @@ jobs:
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
-        with: index.html
+        with: ./jest-html-reporters-attach/report
 
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: html-report
+          clean: true
+          token: ${{ secrets.TOKEN }}
 
       - name: Send report via telegram bot
         run: "curl -X POST https://api.telegram.org/bot${{secrets.BOT_TOKEN}}/sendMessage -H \"Content-Type: application/json\" -d '{\"chat_id\": \"${{secrets.CHAT_ID}}\", \"text\": \"Hello world from public repo pages!\"}'"
