@@ -1,4 +1,4 @@
-name: Tests
+name: Tests 2
 
 on: [push]
 
@@ -16,30 +16,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v2
         with:
           node-version: 16
           cache: npm
 
       - name: Setup Pages
-        uses: actions/configure-pages@v1
+        uses: actions/configure-pages@v2
 
       - run: npm install
       - run: npm test
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-pages-artifact@v1
         if: always()
         with:
           name: testsReport
-          path: jest-html-reporters-attach.html
+          path: |
+            report.html
+            jest-html-reporters-attach/report
       
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: html-report
-          clean: true
-          token: ${{ secrets.TOKEN }}
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
 
       - name: Send report via telegram bot
-        run: "curl -X POST https://api.telegram.org/bot${{secrets.BOT_TOKEN}}/sendMessage -H \"Content-Type: application/json\" -d '{\"chat_id\": \"${{secrets.CHAT_ID}}\", \"text\": \"Hello world from public repo!\"}'"
+        run: "curl -X POST https://api.telegram.org/bot${{secrets.BOT_TOKEN}}/sendMessage -H \"Content-Type: application/json\" -d '{\"chat_id\": \"${{secrets.CHAT_ID}}\", \"text\": \"Hello world from public repo1!\"}'"
