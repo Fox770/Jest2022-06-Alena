@@ -30,7 +30,7 @@ jobs:
       - run: npm test
       
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-artifact@v3
         with: |
             report.html
             jest-html-reporters-attach/report
