@@ -32,7 +32,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: report.html
+          path: ./jest-html-reporters-attach/report
       
       - name: Deploy to GitHub Pages
         id: deployment
