@@ -30,10 +30,13 @@ jobs:
       - run: npm test
       
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with: 
-          name: report
-          path: ./jest-html-reporters-attach/report 
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: testsReport
+          path: |
+            report.html
+            jest-html-reporters-attach/report
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
