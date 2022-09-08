@@ -30,7 +30,7 @@ jobs:
       - run: npm test
       
       - name: Upload artifact
-      - uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3
         if: always()
         with:
           name: testsReport
