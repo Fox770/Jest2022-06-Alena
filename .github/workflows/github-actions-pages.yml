@@ -46,4 +46,4 @@ jobs:
           token: ${{ secrets.TOKEN }}
 
       - name: Send report via telegram bot
-        run: "curl -X POST https://api.telegram.org/bot${{secrets.BOT_TOKEN}}/sendMessage -H \"Content-Type: application/json\" -d '{\"chat_id\": \"${{secrets.CHAT_ID}}\", \"text\": \"Hello world from public repo pages!\"}'"
+        run: "curl -X POST https://api.telegram.org/bot${{secrets.BOT_TOKEN}}/sendMessage -H \"Content-Type: application/json\" -d '{\"chat_id\": \"${{secrets.CHAT_ID}}\", \"text\": \"Report link is: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}\"}'"
