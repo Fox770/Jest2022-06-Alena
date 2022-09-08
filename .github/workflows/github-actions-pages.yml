@@ -38,7 +38,7 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: report.html
+          folder: .
           clean: true
           token: ${{ secrets.TOKEN }}
 
