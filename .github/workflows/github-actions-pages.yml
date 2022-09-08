@@ -39,7 +39,7 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v1
         with:
-          folder: ./jest-html-reporters-attach/report
+          folder: report.html
           clean: true
           token: ${{ secrets.TOKEN }}
 
